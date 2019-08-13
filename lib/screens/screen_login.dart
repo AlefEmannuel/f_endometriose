@@ -1,3 +1,5 @@
+
+import 'package:f_endometriose/screens/screen_registerUser.dart';
 import 'package:flutter/material.dart';
 
 import 'screen_home.dart';
@@ -33,33 +35,37 @@ class _MyScreenLogin extends State<MyScreenLogin> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height/2.5, //pega a altura da tela e divide por 2.5 (tamanho do gradient)
-              //Box decoration para realizar as alterações no front 
-              decoration: BoxDecoration(
-                gradient: LinearGradient( //Chama o gradient
+              //Box decoration para realizar as alterações no front               
+              decoration: new BoxDecoration(
+                image: new DecorationImage(
+                  image: new AssetImage('images/endowallpaper.jpg'),
+                  fit: BoxFit.cover,
+                ),            
+              
+               /* gradient: LinearGradient( //Chama o gradient
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
                     Color(0xFFF555C0),
                     Color(0xFFF986D3),
                   ],
-                ),
+                ),*/
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(90), //Deixa o canto do gradient arrendondado
+                bottomLeft: Radius.circular(100), //Deixa o canto esquerdo do gradient arrendondado                                    
                 ),
               ),
-              child: Column(
+              /*child: Column(
                 mainAxisAlignment: MainAxisAlignment.center, //Coloca o icone no meio do gradient
                 children: <Widget>[ 
-                  SizedBox(child: Image.asset("images/uterus.png", height: 150, width: 150,), ),                 
-                  
+                  SizedBox(child: Image.asset("images/uterus.png", height: 150, width: 150,), ),          
                 ],
-              ),
+              ),*/
             ),
 
             //Container contendo o formulário de login
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height/2,
+              height: MediaQuery.of(context).size.height/1.9,
               padding: EdgeInsets.only(top: 50), //Define uma altura para não pegar no gradiente de cima
               child: Column(
                 children: <Widget>[
@@ -86,7 +92,7 @@ class _MyScreenLogin extends State<MyScreenLogin> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(                        
-                        icon: Icon(Icons.email, color: Color(0xFFF986D3),),
+                        icon: Icon(Icons.email, color: Color(0xFF3CB371),),
                         hintText: 'Email',
                       ),
                     ),
@@ -116,7 +122,7 @@ class _MyScreenLogin extends State<MyScreenLogin> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(                        
-                        icon: Icon(Icons.vpn_key, color: Color(0xFFF986D3),),
+                        icon: Icon(Icons.vpn_key, color: Color(0xFF3CB371),),
                         hintText: 'Senha',
                       ),
                     ),
@@ -128,11 +134,6 @@ class _MyScreenLogin extends State<MyScreenLogin> {
                       padding: const EdgeInsets.only(
                         top: 20,
                         right: 32,
-                      ),
-                      child: Text('Esqueceu sua senha?',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
                       ),
                     ),                    
                   ),
@@ -148,8 +149,8 @@ class _MyScreenLogin extends State<MyScreenLogin> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0xFFF555C0),
-                            Color(0xFFF986D3),
+                            Color(0xFF3CB371),
+                            Color(0xFF3CB371),
                           ]
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(50)), //Deixa o botao redondo
@@ -158,6 +159,37 @@ class _MyScreenLogin extends State<MyScreenLogin> {
                         child: Text('Entrar'.toUpperCase(),
                           style: TextStyle(
                             color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),                    
+                    ),
+                  ),
+                  Spacer(),
+                  Text('OU', style: TextStyle(color: Colors.black38, fontWeight: FontWeight.bold),),
+                  Spacer(),
+
+                  new GestureDetector(
+                    onTap: () async {      
+                      Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new RegisterUser()));
+                    },
+                    child: new Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width/1.2, //pega o tamanho da tela e divide por 1.2 que é a largura do botao
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFFDCDCDC),
+                            Color(0xFFDCDCDC),
+                          ]
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(50)), //Deixa o botao redondo
+                      ),
+                      child: Center( //Deixa o texto do botao no centro
+                        child: Text('Cadastre-se'.toUpperCase(),
+                          style: TextStyle(
+                            color: Color(0xFF3CB371),
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
                           ),
