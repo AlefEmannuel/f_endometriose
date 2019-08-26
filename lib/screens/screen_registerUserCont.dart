@@ -2,6 +2,8 @@ import 'package:f_endometriose/screens/screen_home.dart';
 import 'package:flutter/material.dart';
 
 class RegisterUserCont extends StatefulWidget {
+  RegisterUserCont(String nome, String sobrenome, String estadoCivil);
+
   @override
   _RegisterUserContState createState() => _RegisterUserContState();
 }
@@ -36,15 +38,28 @@ class _RegisterUserContState extends State<RegisterUserCont> {
                       )
                     ),
                   ),
+                  Padding(padding: EdgeInsets.only(top: 20),),                  
+                  TextField(
+                    decoration: new InputDecoration(
+                      hintText: ('$_dataInfo'),
+                      labelText: 'Data',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      icon: Icon(Icons.calendar_today),
+                      
+                    ),
+                  ),
                   Padding(padding: EdgeInsets.only(top: 20),),
                   
-                  FlatButton(
+                  FlatButton(                    
                       child: new Row(
                         children: <Widget>[
                           new Text('$_dataInfo'),
-                          new Icon(Icons.calendar_today),                          
+                          new Icon(Icons.calendar_today),                                              
                         ],
                       ),
+                      
                       onPressed: () async {
                         final dtPick = await showDatePicker(
                           context: context,

@@ -1,7 +1,7 @@
+import 'package:f_endometriose/screens/screen_testeAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 import 'screen_login.dart';
-import 'screen_registerPatient.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -41,16 +41,10 @@ class _MyHomePageState extends State<HomePage> with SingleTickerProviderStateMix
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: new AppBar(title: new Text("Página inicial"),backgroundColor: Color(0xFF3CB371),),
-      drawer: Drawer( 
+      endDrawer: Drawer( 
         child: ListView(
           padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Vai ter alguma coisa aqui'),
-              decoration: BoxDecoration(
-                color: Color(0xFF3CB371),
-              ),
-            ),
+          children: <Widget>[            
             ListTile(
               title: Text('Fazer Questionário'),
               trailing: new Icon(Icons.assignment),
@@ -64,7 +58,7 @@ class _MyHomePageState extends State<HomePage> with SingleTickerProviderStateMix
               onTap: (){
                 Navigator.push(
                   context,
-                   MaterialPageRoute(builder: (context) => RegisterPatient()),
+                   MaterialPageRoute(builder: (context) => AnimationTeste()),
                 );
               },
             ),

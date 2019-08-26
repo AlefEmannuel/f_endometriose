@@ -10,6 +10,9 @@ class RegisterUser extends StatefulWidget {
 
 class _RegisterUserState extends State<RegisterUser> {
   String estadoCivil = "";
+  String nome = "";
+  String sobrenome = "";
+
   void valueEstadoCivil(String value){
     setState(() {
      estadoCivil = value; 
@@ -33,9 +36,16 @@ class _RegisterUserState extends State<RegisterUser> {
                       labelText: 'Nome',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                      )
+                      )                      
                     ),
+                    onChanged: (String nomeResult){
+                      setState(() {
+                       nome = nomeResult;
+                       print(nome); 
+                      });
+                    }
                   ),
+                  
                   Padding(padding: EdgeInsets.only(top: 20),),
                   TextField(
                     decoration: new InputDecoration(
@@ -45,6 +55,12 @@ class _RegisterUserState extends State<RegisterUser> {
                         borderRadius: BorderRadius.circular(20.0),
                       )
                     ),
+                    onChanged: (String sobrenomeResult){
+                      setState(() {
+                       nome = sobrenomeResult;
+                       print(nome); 
+                      });
+                    }
                   ),
                   Padding(padding: EdgeInsets.only(top: 20),),
                   Padding(padding: EdgeInsets.only(top: 20),),
@@ -94,7 +110,7 @@ class _RegisterUserState extends State<RegisterUser> {
                   Padding(padding: EdgeInsets.only(top: 20),),
                   GestureDetector(
                     onTap: () async {      
-                      Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new RegisterUserCont()));
+                      Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new RegisterUserCont(nome, sobrenome, estadoCivil)));
                     },
                     child: new Container(
                       height: 50,
