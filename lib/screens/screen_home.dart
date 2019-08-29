@@ -1,7 +1,8 @@
-import 'package:f_endometriose/screens/screen_testeAnimation.dart';
+
+import 'package:f_endometriose/screens/screen_login.dart';
+import 'package:f_endometriose/screens/screen_registerUser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
-import 'screen_login.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -66,9 +67,11 @@ class _MyHomePageState extends State<HomePage>
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 ListTile(
-                  title: Text('Perfil'),
-                  trailing: Icon(Icons.person_outline),
-                  onTap: () => {},
+                  title: Text('Cadastrar Paciente'),
+                  trailing: Icon(Icons.person_add),
+                  onTap: () => {
+                    Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new RegisterUser())),
+                  },
                 ),
                 ListTile(
                   title: Text('Home'),
@@ -82,8 +85,10 @@ class _MyHomePageState extends State<HomePage>
                 ),
                 ListTile(
                   title: Text('Sair'),
-                  trailing: Icon(Icons.exit_to_app),
-                  onTap: () => {},
+                  trailing: Icon(Icons.exit_to_app, color: Colors.red,),
+                  onTap: () => {
+                    Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new ScreenLogin())),
+                  },
                 ),
               ],
             ),

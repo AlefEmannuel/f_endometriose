@@ -1,9 +1,8 @@
+import 'package:f_endometriose/screens/screen_login.dart';
 import 'package:flutter/material.dart';
-import 'screens/screen_login.dart';
 
-//Redireciona para página de login
-void main(){
-  runApp(new MaterialApp(
-    home: new ScreenLogin(),
-  ));
-}
+
+void main() => runApp(MaterialApp(
+      home: ScreenLogin(),
+      debugShowCheckedModeBanner: false,
+    ));
