@@ -55,11 +55,11 @@ class _MyAppState extends State<ScreenLogin> {
         fit: StackFit.expand,
         children: <Widget>[
           Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 30.0),
-                child: Image.asset("images/med.png"),
+                padding: EdgeInsets.only(top: 60.0),
+                child: Image.asset("images/logo_name.png",height: 115,alignment: Alignment.center,),
               ),
               Expanded(
                 child: Container(),
@@ -75,11 +75,12 @@ class _MyAppState extends State<ScreenLogin> {
                   Row(
                     children: <Widget>[
                       Image.asset(
+                        //"images/logo-head.png",
                         "",
                         width: ScreenUtil.getInstance().setWidth(110),
                         height: ScreenUtil.getInstance().setHeight(110),
                       ),
-                      Text("DORA",
+                      Text("",
                           style: TextStyle(
                               fontFamily: "Poppins-Bold",
                               fontSize: ScreenUtil.getInstance().setSp(46),
@@ -119,7 +120,8 @@ class _MyAppState extends State<ScreenLogin> {
                           decoration: BoxDecoration(
                               gradient: LinearGradient(colors: [
                                 Color(0xFF17ead9),
-                                Color(0xFF6078ea)
+                                Color(0xFF17ead9),
+//                                Color(0xFF6078ea)
                               ]),
                               borderRadius: BorderRadius.circular(6.0),
                               boxShadow: [
