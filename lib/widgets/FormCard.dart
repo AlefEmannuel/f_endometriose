@@ -17,7 +17,7 @@ class FormCard extends StatelessWidget {
                 blurRadius: 15.0),
             BoxShadow(
                 color: Colors.black12,
-                offset: Offset(0.0, -10.0),
+                offset: Offset(0.0, 1.0),
                 blurRadius: 10.0),
           ]),
       child: Padding(
