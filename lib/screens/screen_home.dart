@@ -1,6 +1,7 @@
 
 import 'package:f_endometriose/screens/screen_login.dart';
-import 'package:f_endometriose/screens/screen_registerUser.dart';
+import 'package:f_endometriose/screens/screen_queixaPrincipal.dart';
+import 'package:f_endometriose/screens/screen_registerPatient1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
@@ -71,6 +72,13 @@ class _MyHomePageState extends State<HomePage>
                   trailing: Icon(Icons.person_add),
                   onTap: () => {
                     Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new RegisterUser())),
+                  },
+                ),
+                ListTile(
+                  title: Text('Formulário'),
+                  trailing: Icon(Icons.person_add),
+                  onTap: () => {
+                    Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QueixaPrincipal())),
                   },
                 ),
                 ListTile(

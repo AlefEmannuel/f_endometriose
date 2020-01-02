@@ -1,5 +1,6 @@
 import 'package:f_endometriose/screens/screen_home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_xlider/flutter_xlider.dart';
 
 class RegisterUserCont extends StatefulWidget {
   RegisterUserCont(String nome, String sobrenome, String estadoCivil);
@@ -11,28 +12,42 @@ class RegisterUserCont extends StatefulWidget {
 class _RegisterUserContState extends State<RegisterUserCont> {
 
   DateTime _dataInfo;
-  String etnia = "";
-  void valueEtnia(String value){
+  //value da pergunta relacionada a tabagismo
+  String tabagismo = "";
+  void valueTabagismo(String value){
     setState(() {
-     etnia = value; 
+     tabagismo = value; 
     });
   }
+  //value da pergunta relacionada aos parentes com endometriose
+  String parentes = "";
+  void valueParentes(String value){
+    setState(() {
+     parentes = value; 
+    });
+  }
+
+  //value da pergunta relacionada a qualidade de vida
+  double _lowerValue = 0;
+  double _upperValue = 10;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(title: new Text("Registrar Usuário"),backgroundColor: Color(0xFF3CB371),),
-      body: Container(
+      resizeToAvoidBottomPadding: false,
+      appBar: new AppBar(title: new Text("Registrar Paciente"),backgroundColor: Color(0xFF6078ea),),
+      body: SingleChildScrollView (
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(15.0),
               child: Column(
                 children: <Widget>[
                   TextField(
                     keyboardType: TextInputType.number,
                     decoration: new InputDecoration(
-                      hintText: 'Registro AGHU',
-                      labelText: 'Registro AGHU',
+                      hintText: 'Idade da primeira menstruação',
+                      labelText: 'Idade da primeira menstruação',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       )
@@ -75,49 +90,64 @@ class _RegisterUserContState extends State<RegisterUserCont> {
                   ), 
                   Padding(padding: EdgeInsets.only(top: 20),),
                   Text(
-                    'Etnia:',
+                    'História de tabagismo:',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
                   ),
                   RadioListTile(
-                      value: 'Branco',
-                      title: Text('Branco'),
-                      groupValue: etnia,
+                      value: 'Sim',
+                      title: Text('Sim'),
+                      groupValue: tabagismo,
                       onChanged: (String value){
-                        valueEtnia(value);
+                        valueTabagismo(value);
                       },
                       activeColor: Colors.blue,
                   ),
                   RadioListTile(
-                      value: 'Negro',
-                      title: Text('Negro'),
-                      groupValue: etnia,
+                      value: 'Não',
+                      title: Text('Não'),
+                      groupValue: tabagismo,
                       onChanged: (String value){
-                        valueEtnia(value);
+                       valueTabagismo(value);
                       },
                       activeColor: Colors.blue,
-                  ),
-                  RadioListTile(
-                      value: 'Pardo',
-                      title: Text('Pardo'),
-                      groupValue: etnia,
-                      onChanged: (String value){
-                        valueEtnia(value);
-                      },
-                      activeColor: Colors.blue,
-                  ),
-                  RadioListTile(
-                      value: 'Indígena',
-                      title: Text('Indígena'),
-                      groupValue: etnia,
-                      onChanged: (String value){
-                        valueEtnia(value);
-                      },
-                      activeColor: Colors.blue,
-                  ),
-
+                  ),                
                   Padding(padding: EdgeInsets.only(top: 20),),
+                  Text(
+                    'A paciente apresenta parentes de primeiro grau com história de endometriose (mãe, filha ou irmã)?',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  RadioListTile(
+                      value: 'Sim',
+                      title: Text('Sim'),
+                      groupValue: parentes,
+                      onChanged: (String value){
+                        valueParentes(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  RadioListTile(
+                      value: 'Não',
+                      title: Text('Não'),
+                      groupValue: parentes,
+                      onChanged: (String value){
+                        valueParentes(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  FlutterSlider(
+                    values: [10],
+                    max: 10,
+                    min: 0,
+                    onDragging: (handlerIndex, lowerValue, upperValue) {
+                      _lowerValue = lowerValue;
+                      _upperValue = upperValue;
+                      setState(() {});
+                    },
+                  ),
                   GestureDetector(
                     onTap: () async {      
                       Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new HomePage()));
@@ -128,8 +158,8 @@ class _RegisterUserContState extends State<RegisterUserCont> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0xFF3CB371),
-                            Color(0xFF3CB371),
+                            Color(0xFF6078ea),
+                            Color(0xFF6078ea),
                           ]
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(50)), //Deixa o botao redondo

@@ -22,8 +22,8 @@ class _RegisterUserState extends State<RegisterUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(title: new Text("Registrar Usuário"),backgroundColor: Color(0xFF3CB371),),
-      body: Container(
+      appBar: new AppBar(title: new Text("Registrar Paciente"),backgroundColor: Color(0xFF6078ea),),
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
@@ -32,8 +32,8 @@ class _RegisterUserState extends State<RegisterUser> {
                 children: <Widget>[
                   TextField(
                     decoration: new InputDecoration(
-                      hintText: 'Nome',
-                      labelText: 'Nome',
+                      hintText: 'Nome Completo',
+                      labelText: 'Nome Completo',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       )                      
@@ -48,9 +48,10 @@ class _RegisterUserState extends State<RegisterUser> {
                   
                   Padding(padding: EdgeInsets.only(top: 20),),
                   TextField(
+                    keyboardType: TextInputType.number,
                     decoration: new InputDecoration(
-                      hintText: 'Sobrenome',
-                      labelText: 'Sobrenome',
+                      hintText: 'AGHU',
+                      labelText: 'AGHU',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       )
@@ -65,14 +66,14 @@ class _RegisterUserState extends State<RegisterUser> {
                   Padding(padding: EdgeInsets.only(top: 20),),
                   Padding(padding: EdgeInsets.only(top: 20),),
                   Text(
-                    'Estado Civil:',
+                    'Etnia:',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
                   ),
                   RadioListTile(
-                      value: 'Solteira',
-                      title: Text('Solteira'),
+                      value: 'Branca',
+                      title: Text('Branca'),
                       groupValue: estadoCivil,
                       onChanged: (String value){
                         valueEstadoCivil(value);
@@ -80,8 +81,8 @@ class _RegisterUserState extends State<RegisterUser> {
                       activeColor: Colors.blue,
                   ),
                   RadioListTile(
-                      value: 'Casada',
-                      title: Text('Casada'),
+                      value: 'Parda',
+                      title: Text('Parda'),
                       groupValue: estadoCivil,
                       onChanged: (String value){
                         valueEstadoCivil(value);
@@ -89,8 +90,8 @@ class _RegisterUserState extends State<RegisterUser> {
                       activeColor: Colors.blue,
                   ),
                   RadioListTile(
-                      value: 'Divorciada',
-                      title: Text('Divorciada'),
+                      value: 'Negra',
+                      title: Text('Negra'),
                       groupValue: estadoCivil,
                       onChanged: (String value){
                         valueEstadoCivil(value);
@@ -98,8 +99,26 @@ class _RegisterUserState extends State<RegisterUser> {
                       activeColor: Colors.blue,
                   ),
                   RadioListTile(
-                      value: 'Viúva',
-                      title: Text('Viúva'),
+                      value: 'Indígena',
+                      title: Text('Indígena'),
+                      groupValue: estadoCivil,
+                      onChanged: (String value){
+                        valueEstadoCivil(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  RadioListTile(
+                      value: 'Adiática',
+                      title: Text('Adiática'),
+                      groupValue: estadoCivil,
+                      onChanged: (String value){
+                        valueEstadoCivil(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  RadioListTile(
+                      value: 'Outra',
+                      title: Text('Outra'),
                       groupValue: estadoCivil,
                       onChanged: (String value){
                         valueEstadoCivil(value);
@@ -118,8 +137,8 @@ class _RegisterUserState extends State<RegisterUser> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0xFF3CB371),
-                            Color(0xFF3CB371),
+                            Color(0xFF6078ea),
+                            Color(0xFF6078ea),
                           ]
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(50)), //Deixa o botao redondo

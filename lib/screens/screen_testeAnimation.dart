@@ -1,4 +1,4 @@
-import 'package:f_endometriose/screens/screen_registerUser.dart';
+import 'package:f_endometriose/screens/screen_registerPatient1.dart';
 import 'package:flutter/material.dart';
 import 'package:animator/animator.dart';
 

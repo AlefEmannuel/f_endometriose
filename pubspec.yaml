@@ -26,6 +26,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_screenutil: ^0.4.2
   intl: ^0.15.8
+  flutter_xlider: ^3.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
