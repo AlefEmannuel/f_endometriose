@@ -22,7 +22,7 @@ class _RegisterUserState extends State<RegisterUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(title: new Text("Registrar Paciente"),backgroundColor: Color(0xFF6078ea),),
+      appBar: new AppBar(title: new Text("Registrar Paciente"),backgroundColor: Color(0xFF17ead9),),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -137,8 +137,8 @@ class _RegisterUserState extends State<RegisterUser> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0xFF6078ea),
-                            Color(0xFF6078ea),
+                            Color(0xFF17ead9),
+                            Color(0xFF17ead9),
                           ]
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(50)), //Deixa o botao redondo

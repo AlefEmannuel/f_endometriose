@@ -78,7 +78,7 @@ class _MyHomePageState extends State<HomePage>
                   title: Text('Formulário'),
                   trailing: Icon(Icons.person_add),
                   onTap: () => {
-                    Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QueixaPrincipal())),
+                    Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QueixaPrincipalScreen())),
                   },
                 ),
                 ListTile(

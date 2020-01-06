@@ -1,26 +1,17 @@
 import 'package:f_endometriose/classes/queixaPrincipal.dart';
-import 'package:f_endometriose/screens/screen_doresCronicas.dart';
+import 'package:f_endometriose/screens/screen_doresMenstruais.dart';
 import 'package:f_endometriose/screens/screen_registerUserCont.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_xlider/flutter_xlider.dart';
 
 const appName = 'DateTimePickerFormField Example';
 
-class QueixaPrincipalScreen extends StatefulWidget {
+class DoresCronicasScreen extends StatefulWidget {
   @override
-  _QueixaPrincipal createState() => _QueixaPrincipal();
+  _DoresCronicas createState() => _DoresCronicas();
 }
 
-class _QueixaPrincipal extends State<QueixaPrincipalScreen> {
-  QueixaPrincipal selectedQueixaPrincipal;
-  List<QueixaPrincipal> queixasPrincipais = <QueixaPrincipal>[
-    const QueixaPrincipal('Dismenorreia Incapacitante'),
-    const QueixaPrincipal('Dor pélvica acíclica'), 
-    const QueixaPrincipal('Infertilidade'),
-    const QueixaPrincipal('Dispareunia de Profundidade'),
-    const QueixaPrincipal('Disquezia cíclica'),
-    const QueixaPrincipal('Disúria Cíclica'),
-    const QueixaPrincipal('Nenhum se aplica/Outras')];
-
+class _DoresCronicas extends State<DoresCronicasScreen> {
 
   String estadoCivil = "";
   String nome = "";
@@ -38,41 +29,96 @@ class _QueixaPrincipal extends State<QueixaPrincipalScreen> {
      gravidez = value; 
     });
   }
+  
+  //value da pergunta relacionada a qualidade de vida
+  double _lowerValue = 0;
+  double _upperValue = 10;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(title: new Text("Queixa Principal"),backgroundColor: Color(0xFF17ead9),),
+      appBar: new AppBar(title: new Text("Dores Crônicas"),backgroundColor: Color(0xFF17ead9),),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(15.0),
+              padding: EdgeInsets.all(20.0),
               child: Column(
                 children: <Widget>[
-                  
-                  DropdownButton(
-                    hint: new Text("Selecione a queixa principal:"),
-                    value: selectedQueixaPrincipal,
-                    onChanged: (QueixaPrincipal newValue){
-                      setState(() {
-                        selectedQueixaPrincipal = newValue;         
-                      });
+                  Text(
+                    'Dor pélvica crônica (ou seja, dor pélvica entre as coxas e o umbigo não relacionada ao período menstrual) por pelo menos 3 meses?',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  FlutterSlider(
+                    values: [10],
+                    max: 10,
+                    min: 0,
+                    onDragging: (handlerIndex, lowerValue, upperValue) {
+                      _lowerValue = lowerValue;
+                      _upperValue = upperValue;
+                      setState(() {});
                     },
-                    items: queixasPrincipais.map((QueixaPrincipal queixaPrincipal){
-                      return new DropdownMenuItem<QueixaPrincipal>(
-                        value: queixaPrincipal,
-                        child: new Text(
-                          queixaPrincipal.name,
-                          style: new TextStyle(color: Colors.black87),
-                        ),
-                      );
-                    }).toList(),
                   ),
                   Divider(),
                   Padding(padding: EdgeInsets.only(top: 20),),
                   Text(
-                    'A paciente já engravidou alguma vez?',
+                    'A paciente apresenta alguma dor profunda na relação sexual?',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  FlutterSlider(
+                    values: [10],
+                    max: 10,
+                    min: 0,
+                    onDragging: (handlerIndex, lowerValue, upperValue) {
+                      _lowerValue = lowerValue;
+                      _upperValue = upperValue;
+                      setState(() {});
+                    },
+                  ),
+                  Divider(),
+                  Padding(padding: EdgeInsets.only(top: 20),),
+                  Text(
+                    'A paciente apresenta dor superficial (na inserção) durante a relação sexual?',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  FlutterSlider(
+                    values: [10],
+                    max: 10,
+                    min: 0,
+                    onDragging: (handlerIndex, lowerValue, upperValue) {
+                      _lowerValue = lowerValue;
+                      _upperValue = upperValue;
+                      setState(() {});
+                    },
+                  ),
+                  Divider(),
+                  Padding(padding: EdgeInsets.only(top: 20),),
+                  Text(
+                    'A paciente apresenta dor pélvica que permanece por várias horas após a relação sexual?',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  FlutterSlider(
+                    values: [10],
+                    max: 10,
+                    min: 0,
+                    onDragging: (handlerIndex, lowerValue, upperValue) {
+                      _lowerValue = lowerValue;
+                      _upperValue = upperValue;
+                      setState(() {});
+                    },
+                  ),
+                  Divider(),
+                  Padding(padding: EdgeInsets.only(top: 20),),
+                  Text(
+                    'A paciente apresenta sangramentos fora do período menstrual?',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
@@ -96,70 +142,9 @@ class _QueixaPrincipal extends State<QueixaPrincipalScreen> {
                       activeColor: Colors.blue,
                   ),
                   Divider(),
-                  Padding(padding: EdgeInsets.only(top: 20),),
+                  Padding(padding: EdgeInsets.only(top: 20),),                        
                   Text(
-                    'Se sim, quantas gestações?',
-                    style: TextStyle(
-                      fontSize: 17.0,
-                    ),
-                  ),
-                  RadioListTile(
-                      value: '0',
-                      title: Text('0'),
-                      groupValue: gravidez,
-                      onChanged: (String value){
-                        valueGravidez(value);
-                      },
-                      activeColor: Colors.blue,
-                  ),
-                  RadioListTile(
-                      value: '1',
-                      title: Text('1'),
-                      groupValue: gravidez,
-                      onChanged: (String value){
-                        valueGravidez(value);
-                      },
-                      activeColor: Colors.blue,
-                  ),
-                  RadioListTile(
-                      value: '+1',
-                      title: Text('+1'),
-                      groupValue: gravidez,
-                      onChanged: (String value){
-                        valueGravidez(value);
-                      },
-                      activeColor: Colors.blue,
-                  ),
-                  Divider(),
-                  Padding(padding: EdgeInsets.only(top: 20),),
-                  Text(
-                    'Se não, a paciente apresenta sinais de infertilidade?',
-                    style: TextStyle(
-                      fontSize: 17.0,
-                    ),
-                  ),
-                  RadioListTile(
-                      value: 'Sim',
-                      title: Text('Sim'),
-                      groupValue: gravidez,
-                      onChanged: (String value){
-                        valueGravidez(value);
-                      },
-                      activeColor: Colors.blue,
-                  ),
-                  RadioListTile(
-                      value: 'Não',
-                      title: Text('Não'),
-                      groupValue: gravidez,
-                      onChanged: (String value){
-                        valueGravidez(value);
-                      },
-                      activeColor: Colors.blue,
-                  ),
-                  Divider(),
-                  Padding(padding: EdgeInsets.only(top: 20),),
-                  Text(
-                    'Se sim, há quanto tempo a paciente vem tentando engravidar? (aproximação em meses)',
+                    'Com qual idade a paciente começou a apresentar sintomas de dor pélvica?',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
@@ -168,8 +153,8 @@ class _QueixaPrincipal extends State<QueixaPrincipalScreen> {
                   TextField(
                     keyboardType: TextInputType.number,
                     decoration: new InputDecoration(
-                      hintText: 'Tempo em meses',
-                      labelText: 'Tempo em meses',
+                      hintText: 'Idade',
+                      labelText: 'Idade',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       )
@@ -182,10 +167,19 @@ class _QueixaPrincipal extends State<QueixaPrincipalScreen> {
                     }
                   ),
                   Padding(padding: EdgeInsets.only(top: 20),),
+                   RadioListTile(
+                      value: 'Não lembra',
+                      title: Text('Não lembra'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
                   Padding(padding: EdgeInsets.only(top: 20),),
                   GestureDetector(
                     onTap: () async {      
-                      Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new DoresCronicasScreen()));
+                      Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new DoresMenstruaisScreen()));
                     },
                     child: new Container(
                       height: 50,
