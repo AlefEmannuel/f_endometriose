@@ -1,5 +1,4 @@
 import 'package:f_endometriose/classes/queixaPrincipal.dart';
-import 'package:f_endometriose/screens/screen_achadosExames.dart';
 import 'package:f_endometriose/screens/screen_doresMenstruais.dart';
 import 'package:f_endometriose/screens/screen_registerUserCont.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +6,12 @@ import 'package:flutter_xlider/flutter_xlider.dart';
 
 const appName = 'DateTimePickerFormField Example';
 
-class PerguntasRastreioScreen extends StatefulWidget {
+class AchadosExamesScreen extends StatefulWidget {
   @override
-  _PerguntasRastreio createState() => _PerguntasRastreio();
+  _AchadosExames createState() => _AchadosExames();
 }
 
-class _PerguntasRastreio extends State<PerguntasRastreioScreen> {
+class _AchadosExames extends State<AchadosExamesScreen> {
 
   String estadoCivil = "";
   String nome = "";
@@ -38,7 +37,7 @@ class _PerguntasRastreio extends State<PerguntasRastreioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(title: new Text("Perguntas de Rastreio"),backgroundColor: Color(0xFF17ead9),),
+      appBar: new AppBar(title: new Text("Achados Exames"),backgroundColor: Color(0xFF17ead9),),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -47,7 +46,7 @@ class _PerguntasRastreio extends State<PerguntasRastreioScreen> {
               child: Column(
                 children: <Widget>[
                   Text(
-                    'A paciente teve que faltar à escola ou ao trabalho devido à dor pélvica?',
+                    'Presença de massas anexiais palpáveis?',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
@@ -73,7 +72,7 @@ class _PerguntasRastreio extends State<PerguntasRastreioScreen> {
                   Divider(),
                   Padding(padding: EdgeInsets.only(top: 20),),          
                   Text(
-                    'A paciente já esteve no pronto socorro pela dor pélvica, mas não recebeu um diagnóstico específico?',
+                    'Presença de espessamento do Ligamento Utero-sacro?',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
@@ -99,7 +98,7 @@ class _PerguntasRastreio extends State<PerguntasRastreioScreen> {
                   Divider(),
                   Padding(padding: EdgeInsets.only(top: 20),),          
                   Text(
-                    'A paciente teve que tomar narcóticos, analgésicos ou anti-inflamatórios (ex: morfina, tramal, dolantina, buscopam, ibuprofeno) para a dor?',
+                    'Presença de nódulos em fundo de saco posterior?',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
@@ -125,7 +124,7 @@ class _PerguntasRastreio extends State<PerguntasRastreioScreen> {
                   Divider(),
                   Padding(padding: EdgeInsets.only(top: 20),),      
                   Text(
-                    'A paciente fez ou está em uso de supressão hormonal (diga-se uso de pílulas anticoncepcionais, injeções, SIU-LNG) para dores pélvicas menstruais?',
+                    'Presença de dor a mobilização do colo uterino?',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
@@ -149,9 +148,9 @@ class _PerguntasRastreio extends State<PerguntasRastreioScreen> {
                       activeColor: Colors.blue,
                   ),
                   Divider(),
-                  Padding(padding: EdgeInsets.only(top: 20),),          
+                  Padding(padding: EdgeInsets.only(top: 20),),    
                   Text(
-                    'A paciente já fez alguma cirurgia ou laparoscopia diagnóstica para dor pélvica ou infertilidade?',
+                    'Sinais sugestivos de endometriose?',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
@@ -175,33 +174,116 @@ class _PerguntasRastreio extends State<PerguntasRastreioScreen> {
                       activeColor: Colors.blue,
                   ),
                   Divider(),
-                  Padding(padding: EdgeInsets.only(top: 20),),                    
+                  Padding(padding: EdgeInsets.only(top: 20),),       
                   Text(
-                    'Se sim, que tipo de tratamento a paciente recebeu?',
+                    'Sinais sugestivos de endometriose?',
                     style: TextStyle(
                       fontSize: 17.0,
                     ),
                   ),
-                  Padding(padding: EdgeInsets.only(top: 20),),
-                  TextField(
-                    decoration: new InputDecoration(
-                      hintText: 'Tratamento',
-                      labelText: 'Tratamento',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      )
-                    ),
-                    onChanged: (String sobrenomeResult){
-                      setState(() {
-                       nome = sobrenomeResult;
-                       print(nome); 
-                      });
-                    }
+                  RadioListTile(
+                      value: 'Sim',
+                      title: Text('Sim'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
                   ),
-                  Padding(padding: EdgeInsets.only(top: 20),),
+                  RadioListTile(
+                      value: 'Não',
+                      title: Text('Não'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  Divider(),
+                  Padding(padding: EdgeInsets.only(top: 20),),     
+                  Text(
+                    'Sinais sugestivos de endometriose?',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  RadioListTile(
+                      value: 'Sim',
+                      title: Text('Sim'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  RadioListTile(
+                      value: 'Não',
+                      title: Text('Não'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  Divider(),
+                  Padding(padding: EdgeInsets.only(top: 20),),     
+                  Text(
+                    'Encontrado foco de endometriose?',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  RadioListTile(
+                      value: 'Sim',
+                      title: Text('Sim'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  RadioListTile(
+                      value: 'Não',
+                      title: Text('Não'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  Divider(),
+                  Padding(padding: EdgeInsets.only(top: 20),),       
+                  Text(
+                    'Encontrada aderência pélvica?',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  RadioListTile(
+                      value: 'Sim',
+                      title: Text('Sim'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  RadioListTile(
+                      value: 'Não',
+                      title: Text('Não'),
+                      groupValue: gravidez,
+                      onChanged: (String value){
+                        valueGravidez(value);
+                      },
+                      activeColor: Colors.blue,
+                  ),
+                  Divider(),
+                  Padding(padding: EdgeInsets.only(top: 20),),         
+                  
+                  
                   GestureDetector(
                     onTap: () async {      
-                      Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new AchadosExamesScreen()));
+                      Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new DoresMenstruaisScreen()));
                     },
                     child: new Container(
                       height: 50,

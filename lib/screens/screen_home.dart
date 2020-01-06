@@ -103,28 +103,7 @@ class _MyHomePageState extends State<HomePage>
           ],
         ),
       ),
-      body: AnimatedBuilder(
-        animation: animationController,
-        builder: (context, child) => Transform(
-          transform:
-              Matrix4.translationValues(animation.value * width, 0.0, 0.0),
-          child: Container(
-            child: new Column(
-              children: <Widget>[
-                Text(
-                  'Testando essa animação',
-                  style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.grey),
-                ),
-              ],
-            ),
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-          ),
-        ),
-      ),
+      
     );
   }
 }
